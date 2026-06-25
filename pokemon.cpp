@@ -21,6 +21,7 @@ int main()
     cout << "1. Venusaur  HP: " << Venusaur_vida <<endl;
     cout << "2. Charizard HP: " << Charizard_vida <<endl;
     cout << "3. Blastoise HP: " << Blastoise_vida <<endl;
+    cout << "4. "
     cout << "Elige a tu pokemon!:"<<endl;
     cin>> dato;
 
