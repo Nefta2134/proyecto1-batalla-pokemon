@@ -1,4 +1,7 @@
-float calcularMultiplicador(string tipoAtaque, string tipoPokemon)
+#include <string>
+#include <iostream>
+
+float calcularMultiplicador(std::string tipoAtaque, std::string tipoPokemon)
 {
     // Ataques de Fuego
     if (tipoAtaque == "Fuego" && tipoPokemon == "Planta")
