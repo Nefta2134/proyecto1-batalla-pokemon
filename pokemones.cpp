@@ -26,19 +26,6 @@ struct Pokemon
 Pokemon pokemonesDisponibles[30];
 Pokemon equipoJugador1[6], equipoJugador2[6];
 
-int player1_vida, player2_vida, dano;
-
-int opcionMenu, idPokemon, i;
-
-int indiceJ1 = 0, indiceJ2 = 0;
-int opcionAtaque;
-float multiplicador;
-
-int pokemonVivosJ1 = 6, pokemonVivosJ2 = 6;
-bool peleaActiva = true;
-
-void cargarAtaques();
-
 void cargarpokemones()
 {
     pokemonesDisponibles[0] = {"Bulbasaur", 160, 160, 45, 49, "Planta"};
