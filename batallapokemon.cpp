@@ -247,25 +247,3 @@ void batallaFinal(Pokemon equipo1[], Pokemon equipo2[])
         cout << "Gana " << player1_nombre << "!" << endl;
     }
 }
-
-int main()
-{
-    cargarpokemones();
-
-    pedirnombresBatalla();
-
-    cout << endl;
-    cout << "---------------------------------------" << endl;
-    cout << "|          BATALLA POKEMON            |" << endl;
-    cout << "---------------------------------------" << endl;
-
-    cout << endl;
-    cout << "Bienvenido " << player1_nombre << " y " << player2_nombre << " a la batalla Pokemon!" << endl;
-
-    seleccionarEquipoBatalla(equipoJugador1, player1_nombre);
-    seleccionarEquipoBatalla(equipoJugador2, player2_nombre);
-
-    batallaFinal(equipoJugador1, equipoJugador2);
-
-    return 0;
-}
