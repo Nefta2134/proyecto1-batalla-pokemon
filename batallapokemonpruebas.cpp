@@ -5,7 +5,7 @@ using namespace std;
 
 #include "pokemones.cpp"
 #include "ataques.cpp"
-
+#include "guardar_cargar.cpp"
 
 string player1_nombre, player2_nombre;
 
@@ -46,11 +46,10 @@ void seleccionarEquipoBatalla(Pokemon equipo[], string nombreJugador)
     cout << "Elige 6 Pokemones para tu equipo" << endl;
     cout << "-------------------------------------" << endl;
 
-     mostrarpokemonesBatalla();
+    mostrarpokemonesBatalla();
+
     for (int i = 0; i < 6; i++)
     {
-       
-
         cout << endl;
         cout << nombreJugador << ", elige tu Pokemon numero : " << i + 1 << ": ";
         cin >> opcion;
@@ -182,11 +181,8 @@ void esperarContinuar()
     }
 }
 
-void batallaFinal(Pokemon equipo1[], Pokemon equipo2[])
+void batallaFinal(Pokemon equipo1[], Pokemon equipo2[], int indiceJ1 = 0, int indiceJ2 = 0)
 {
-    int indiceJ1 = 0;
-    int indiceJ2 = 0;
-
     while (indiceJ1 < 6 && indiceJ2 < 6)
     {
         Pokemon &p1 = equipo1[indiceJ1];
@@ -199,9 +195,34 @@ void batallaFinal(Pokemon equipo1[], Pokemon equipo2[])
 
         while (p1.vidaActual > 0 && p2.vidaActual > 0)
         {
+            int opcionPartida;
+
             cout << endl;
             cout << "Vida de " << p1.nombre << ": " << p1.vidaActual << "/" << p1.vidaMax << endl;
             cout << "Vida de " << p2.nombre << ": " << p2.vidaActual << "/" << p2.vidaMax << endl;
+
+            cout << endl;
+            cout << "1. Continuar batalla" << endl;
+            cout << "2. Guardar partida" << endl;
+            cout << "3. Guardar y salir" << endl;
+            cout << "Elige una opcion: ";
+            cin >> opcionPartida;
+
+            while (opcionPartida < 1 || opcionPartida > 3)
+            {
+                cout << "Opcion invalida. Elige 1, 2 o 3: ";
+                cin >> opcionPartida;
+            }
+
+            if (opcionPartida == 2)
+            {
+                guardarPartida(player1_nombre, player2_nombre, equipo1, equipo2, indiceJ1, indiceJ2);
+            }
+            else if (opcionPartida == 3)
+            {
+                guardarPartida(player1_nombre, player2_nombre, equipo1, equipo2, indiceJ1, indiceJ2);
+                return;
+            }
 
             cout << endl;
             cout << "Turno de " << player1_nombre << endl;
