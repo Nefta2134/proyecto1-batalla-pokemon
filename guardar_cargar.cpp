@@ -1,4 +1,3 @@
-// guardar_cargar.cpp
 #include <fstream>
 #include <iostream>
 #include <string>
@@ -46,7 +45,7 @@ void cargarPokemon(ifstream &archivo, Pokemon &p)
     }
 }
 
-void guardarPartida(string jugador1, string jugador2, Pokemon equipo1[], Pokemon equipo2[], int indiceJ1, int indiceJ2)
+void guardarPartida(string jugador1, string jugador2, Pokemon equipo1[], Pokemon equipo2[], int indiceJ1, int indiceJ2, int turnoActual)
 {
     ofstream archivo(ARCHIVO_PARTIDA);
 
@@ -60,6 +59,7 @@ void guardarPartida(string jugador1, string jugador2, Pokemon equipo1[], Pokemon
     archivo << jugador2 << endl;
     archivo << indiceJ1 << endl;
     archivo << indiceJ2 << endl;
+    archivo << turnoActual << endl;
 
     for (int i = 0; i < 6; i++)
     {
@@ -76,7 +76,7 @@ void guardarPartida(string jugador1, string jugador2, Pokemon equipo1[], Pokemon
     cout << "Partida guardada correctamente." << endl;
 }
 
-bool cargarPartida(string &jugador1, string &jugador2, Pokemon equipo1[], Pokemon equipo2[], int &indiceJ1, int &indiceJ2)
+bool cargarPartida(string &jugador1, string &jugador2, Pokemon equipo1[], Pokemon equipo2[], int &indiceJ1, int &indiceJ2, int &turnoActual)
 {
     ifstream archivo(ARCHIVO_PARTIDA);
 
@@ -91,6 +91,7 @@ bool cargarPartida(string &jugador1, string &jugador2, Pokemon equipo1[], Pokemo
 
     archivo >> indiceJ1;
     archivo >> indiceJ2;
+    archivo >> turnoActual;
     archivo.ignore(10000, '\n');
 
     for (int i = 0; i < 6; i++)

@@ -1,0 +1,305 @@
+peluche
+lenny
+1
+2
+1
+Chikorita
+Planta
+155
+0
+49
+Placaje
+Planta
+40
+35
+35
+Hoja Afilada
+Planta
+55
+24
+25
+Hoja Magica
+Planta
+60
+19
+20
+Gigadrenado
+Planta
+75
+4
+5
+Bayleef
+Planta
+175
+115
+62
+Placaje
+Planta
+40
+34
+35
+Hoja Afilada
+Planta
+55
+25
+25
+Hoja Magica
+Planta
+60
+18
+20
+Golpe Cuerpo
+Planta
+85
+4
+5
+Meganium
+Planta
+215
+215
+82
+Hoja Afilada
+Planta
+55
+25
+25
+Golpe Cuerpo
+Planta
+85
+5
+5
+Tormenta Floral
+Planta
+90
+5
+5
+Planta Feroz
+Planta
+150
+5
+5
+Treecko
+Planta
+150
+150
+45
+Destructor
+Planta
+40
+35
+35
+Absorber
+Planta
+20
+25
+25
+Ataque Rapido
+Planta
+40
+30
+30
+Gigadrenado
+Planta
+75
+5
+5
+Grovyle
+Planta
+170
+170
+65
+Ataque Rapido
+Planta
+40
+30
+30
+Megaagotar
+Planta
+40
+15
+15
+Gigadrenado
+Planta
+75
+5
+5
+Portazo
+Planta
+80
+5
+5
+Bulbasaur
+Planta
+160
+160
+49
+Placaje
+Normal
+40
+35
+35
+Latigo Cepa
+Planta
+45
+25
+25
+Hoja Afilada
+Planta
+55
+15
+15
+Rayo Solar
+Planta
+90
+5
+5
+Meganium
+Planta
+215
+0
+82
+Hoja Afilada
+Planta
+55
+23
+25
+Golpe Cuerpo
+Planta
+85
+4
+5
+Tormenta Floral
+Planta
+90
+5
+5
+Planta Feroz
+Planta
+150
+5
+5
+Treecko
+Planta
+150
+0
+45
+Destructor
+Planta
+40
+35
+35
+Absorber
+Planta
+20
+24
+25
+Ataque Rapido
+Planta
+40
+29
+30
+Gigadrenado
+Planta
+75
+5
+5
+Grovyle
+Planta
+170
+170
+65
+Ataque Rapido
+Planta
+40
+30
+30
+Megaagotar
+Planta
+40
+15
+15
+Gigadrenado
+Planta
+75
+5
+5
+Portazo
+Planta
+80
+5
+5
+Sceptile
+Planta
+200
+200
+85
+Ataque Rapido
+Planta
+40
+30
+30
+Hoja Aguda
+Planta
+90
+15
+15
+Gigadrenado
+Planta
+75
+5
+5
+Planta Feroz
+Planta
+150
+5
+5
+Bulbasaur
+Planta
+160
+160
+49
+Placaje
+Normal
+40
+35
+35
+Latigo Cepa
+Planta
+45
+25
+25
+Hoja Afilada
+Planta
+55
+15
+15
+Rayo Solar
+Planta
+90
+5
+5
+Ivysaur
+Planta
+180
+180
+62
+Placaje
+Planta
+40
+35
+35
+Latigo Cepa
+Planta
+45
+25
+25
+Hoja Afilada
+Planta
+55
+25
+25
+Rayo Solar
+Planta
+120
+5
+5

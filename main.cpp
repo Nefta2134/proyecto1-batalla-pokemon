@@ -1,15 +1,17 @@
 #include <iostream>
 #include <string>
+#include <limits>
 
 using namespace std;
 
-#include "batallapokemon.cpp"
+#include "batallapokemonpruebas.cpp"
 
 int main()
 {
     int opcion;
     int indiceJ1 = 0;
     int indiceJ2 = 0;
+    int turnoActual = 1;
 
     cargarpokemones();
 
@@ -19,22 +21,26 @@ int main()
     cout << "---------------------------------------" << endl;
 
     cout << endl;
+    cout << "---------------------------------------" << endl;
+    cout << "Bienvenido a la batalla Pokemon!" << endl;
+    cout << "Elige una opcion: " << endl;
     cout << "1. Nueva partida" << endl;
     cout << "2. Cargar partida" << endl;
-    cout << "Elige una opcion: ";
-    cin >> opcion;
+    cout << "---------------------------------------" << endl;
 
-    while (opcion < 1 || opcion > 2)
+    while (!(cin >> opcion) || opcion < 1 || opcion > 2)
     {
         cout << "Opcion invalida. Elige 1 o 2: ";
-        cin >> opcion;
+
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
     }
 
     if (opcion == 2)
     {
-        if (cargarPartida(player1_nombre, player2_nombre, equipoJugador1, equipoJugador2, indiceJ1, indiceJ2))
+        if (cargarPartida(player1_nombre, player2_nombre, equipoJugador1, equipoJugador2, indiceJ1, indiceJ2, turnoActual))
         {
-            batallaFinal(equipoJugador1, equipoJugador2, indiceJ1, indiceJ2);
+            batallaFinal(equipoJugador1, equipoJugador2, indiceJ1, indiceJ2, turnoActual);
         }
         else
         {

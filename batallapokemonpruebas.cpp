@@ -100,34 +100,43 @@ void mostrarAtaquesBatalla(Pokemon atacante, Pokemon defensor)
 
         cout << endl;
     }
+
+    cout << "5. Guardar partida y salir" << endl;
 }
 
-int elegirAtaqueBatalla(Pokemon atacante, Pokemon defensor, string nombreJugador)
+int elegirAtaqueBatalla(Pokemon atacante, Pokemon defensor, string nombreJugador, Pokemon equipo1[], Pokemon equipo2[], int indiceJ1, int indiceJ2, int turnoActual)
 {
     int opcionAtaque;
 
-    mostrarAtaquesBatalla(atacante, defensor);
-
-    cout << endl;
-    cout << nombreJugador << ", selecciona un ataque: ";
-    cin >> opcionAtaque;
-
-    while (opcionAtaque < 1 || opcionAtaque > 4 || atacante.ataques[opcionAtaque - 1].ppActual <= 0)
+    while (true)
     {
+        mostrarAtaquesBatalla(atacante, defensor);
+
+        cout << endl;
+        cout << nombreJugador << ", selecciona un ataque o guarda la partida: ";
+        cin >> opcionAtaque;
+
+        if (opcionAtaque == 5)
+        {
+            guardarPartida(player1_nombre, player2_nombre, equipo1, equipo2, indiceJ1, indiceJ2, turnoActual);
+            cout << endl;
+            cout << "Partida guardada. Saliendo del juego..." << endl;
+            return -1;
+        }
+
         if (opcionAtaque < 1 || opcionAtaque > 4)
         {
-            cout << "Error: elige una opcion del 1 al 4." << endl;
+            cout << "Error: elige una opcion del 1 al 5." << endl;
         }
         else if (atacante.ataques[opcionAtaque - 1].ppActual <= 0)
         {
             cout << "Error: ese ataque ya no tiene PP." << endl;
         }
-
-        cout << "Vuelve a seleccionar un ataque: ";
-        cin >> opcionAtaque;
+        else
+        {
+            return opcionAtaque - 1;
+        }
     }
-
-    return opcionAtaque - 1;
 }
 
 void realizarAtaqueBatalla(Pokemon &atacante, Pokemon &defensor, int indiceAtaque)
@@ -138,7 +147,6 @@ void realizarAtaqueBatalla(Pokemon &atacante, Pokemon &defensor, int indiceAtaqu
     int dano = ataque.danoBase * multiplicador;
 
     ataque.ppActual--;
-
     defensor.vidaActual -= dano;
 
     if (defensor.vidaActual < 0)
@@ -166,22 +174,7 @@ void realizarAtaqueBatalla(Pokemon &atacante, Pokemon &defensor, int indiceAtaqu
     cout << defensor.nombre << " queda con " << defensor.vidaActual << " de vida." << endl;
 }
 
-void esperarContinuar()
-{
-    char continuar;
-
-    cout << endl;
-    cout << "Escribe s para continuar: ";
-    cin >> continuar;
-
-    while (continuar != 's' && continuar != 'S')
-    {
-        cout << "Escribe s para continuar: ";
-        cin >> continuar;
-    }
-}
-
-void batallaFinal(Pokemon equipo1[], Pokemon equipo2[], int indiceJ1 = 0, int indiceJ2 = 0)
+void batallaFinal(Pokemon equipo1[], Pokemon equipo2[], int indiceJ1 = 0, int indiceJ2 = 0, int turnoActual = 1)
 {
     while (indiceJ1 < 6 && indiceJ2 < 6)
     {
@@ -195,61 +188,59 @@ void batallaFinal(Pokemon equipo1[], Pokemon equipo2[], int indiceJ1 = 0, int in
 
         while (p1.vidaActual > 0 && p2.vidaActual > 0)
         {
-            int opcionPartida;
-
             cout << endl;
             cout << "Vida de " << p1.nombre << ": " << p1.vidaActual << "/" << p1.vidaMax << endl;
             cout << "Vida de " << p2.nombre << ": " << p2.vidaActual << "/" << p2.vidaMax << endl;
 
-            cout << endl;
-            cout << "1. Continuar batalla" << endl;
-            cout << "2. Guardar partida" << endl;
-            cout << "3. Guardar y salir" << endl;
-            cout << "Elige una opcion: ";
-            cin >> opcionPartida;
-
-            while (opcionPartida < 1 || opcionPartida > 3)
-            {
-                cout << "Opcion invalida. Elige 1, 2 o 3: ";
-                cin >> opcionPartida;
-            }
-
-            if (opcionPartida == 2)
-            {
-                guardarPartida(player1_nombre, player2_nombre, equipo1, equipo2, indiceJ1, indiceJ2);
-            }
-            else if (opcionPartida == 3)
-            {
-                guardarPartida(player1_nombre, player2_nombre, equipo1, equipo2, indiceJ1, indiceJ2);
-                return;
-            }
-
-            cout << endl;
-            cout << "Turno de " << player1_nombre << endl;
-
-            int ataqueJ1 = elegirAtaqueBatalla(p1, p2, player1_nombre);
-            realizarAtaqueBatalla(p1, p2, ataqueJ1);
-
-            if (p2.vidaActual <= 0)
+            if (turnoActual == 1)
             {
                 cout << endl;
-                cout << p2.nombre << " ha sido derrotado." << endl;
-                indiceJ2++;
-                break;
+                cout << "Turno de " << player1_nombre << endl;
+
+                int ataqueJ1 = elegirAtaqueBatalla(p1, p2, player1_nombre, equipo1, equipo2, indiceJ1, indiceJ2, turnoActual);
+
+                if (ataqueJ1 == -1)
+                {
+                    return;
+                }
+
+                realizarAtaqueBatalla(p1, p2, ataqueJ1);
+
+                if (p2.vidaActual <= 0)
+                {
+                    cout << endl;
+                    cout << p2.nombre << " ha sido derrotado." << endl;
+                    indiceJ2++;
+                    turnoActual = 1;
+                    break;
+                }
+
+                turnoActual = 2;
             }
-
-            cout << endl;
-            cout << "Turno de " << player2_nombre << endl;
-
-            int ataqueJ2 = elegirAtaqueBatalla(p2, p1, player2_nombre);
-            realizarAtaqueBatalla(p2, p1, ataqueJ2);
-
-            if (p1.vidaActual <= 0)
+            else
             {
                 cout << endl;
-                cout << p1.nombre << " ha sido derrotado." << endl;
-                indiceJ1++;
-                break;
+                cout << "Turno de " << player2_nombre << endl;
+
+                int ataqueJ2 = elegirAtaqueBatalla(p2, p1, player2_nombre, equipo1, equipo2, indiceJ1, indiceJ2, turnoActual);
+
+                if (ataqueJ2 == -1)
+                {
+                    return;
+                }
+
+                realizarAtaqueBatalla(p2, p1, ataqueJ2);
+
+                if (p1.vidaActual <= 0)
+                {
+                    cout << endl;
+                    cout << p1.nombre << " ha sido derrotado." << endl;
+                    indiceJ1++;
+                    turnoActual = 1;
+                    break;
+                }
+
+                turnoActual = 1;
             }
         }
     }
