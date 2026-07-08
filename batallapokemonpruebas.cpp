@@ -1,9 +1,11 @@
 #include <iostream>
 #include <string>
+#include <fstream>
 using namespace std;
 
 #include "pokemones.cpp"
 #include "ataques.cpp"
+
 
 string player1_nombre, player2_nombre;
 

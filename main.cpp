@@ -13,10 +13,5 @@ int main()
     cout << pokemonesDisponibles[0].vidaMax << endl; 
     cout << pokemonesDisponibles[0].tipo << endl;    
 
-
-
-
-
-
     return 0;
 }
