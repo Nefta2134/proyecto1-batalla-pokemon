@@ -1,6 +1,5 @@
 #include <iostream>
 #include <string>
-
 using namespace std;
 
 #include "pokemones.cpp"
@@ -8,7 +7,7 @@ using namespace std;
 
 string player1_nombre, player2_nombre;
 
-void pedirnombresBatalla()
+void pedirnombresBatalla() 
 {
     cout << "Ingresa el nombre del jugador numero 1: ";
     cin >> player1_nombre;
@@ -45,9 +44,10 @@ void seleccionarEquipoBatalla(Pokemon equipo[], string nombreJugador)
     cout << "Elige 6 Pokemones para tu equipo" << endl;
     cout << "-------------------------------------" << endl;
 
+     mostrarpokemonesBatalla();
     for (int i = 0; i < 6; i++)
     {
-        mostrarpokemonesBatalla();
+       
 
         cout << endl;
         cout << nombreJugador << ", elige tu Pokemon numero : " << i + 1 << ": ";
@@ -163,6 +163,21 @@ void realizarAtaqueBatalla(Pokemon &atacante, Pokemon &defensor, int indiceAtaqu
     }
 
     cout << defensor.nombre << " queda con " << defensor.vidaActual << " de vida." << endl;
+}
+
+void esperarContinuar()
+{
+    char continuar;
+
+    cout << endl;
+    cout << "Escribe s para continuar: ";
+    cin >> continuar;
+
+    while (continuar != 's' && continuar != 'S')
+    {
+        cout << "Escribe s para continuar: ";
+        cin >> continuar;
+    }
 }
 
 void batallaFinal(Pokemon equipo1[], Pokemon equipo2[])
